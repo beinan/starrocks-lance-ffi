@@ -16,6 +16,9 @@ Use `python3 build.py --prefix ./installed/lance --protoc /path/to/protoc -j 2`.
 The builder runs the Rust regression suite before packaging the shared library,
 header, CMake config, provenance manifest and integration-test dataset.
 Release CI runs natively on x86_64 and ARM64, in Ubuntu and Rocky9 toolchains.
+The Rocky9 packages require glibc 2.34 and are selected by StarRocks on both
+Rocky9 and Ubuntu 22.04/24.04. The separate Ubuntu packages are built on
+Ubuntu 24.04 and require glibc 2.39; do not use them on Ubuntu 22.04.
 The StarRocks repository only downloads and verifies these artifacts; it does
 not install Rust or execute Cargo. Releases are tied to an immutable tag and
 archive SHA-256. SDK updates are explicit, tested releases, not automatic
