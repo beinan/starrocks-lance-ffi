@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ci-protoc.py /src/
 RUN python3 ci-protoc.py
 COPY Cargo.toml Cargo.lock ./
-RUN cargo fetch --locked
+RUN mkdir -p src && touch src/lib.rs && cargo fetch --locked
 COPY . .
 RUN python3 -m unittest test_build && \
     python3 build.py --prefix /out/lance --protoc /opt/protoc/bin/protoc -j 2
